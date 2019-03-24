@@ -10,7 +10,7 @@
 
 class rotaryEncoder {
   private:
-    const double numPos = 128; //numer of positions on rotary encoder
+    const double numPos = 128; //number of positions on rotary encoder
     
   protected:
     double rawPos; //mechanical position
@@ -23,12 +23,12 @@ class rotaryEncoder {
     void init();
     
     //setters
-    void updateRawPos(); //collected data
-    void setAngle(); //calculated value
+    void updateRawPos(); //mechanical position based on zero point reference
+    void setAngle(); //calculated angle
 
     //getters
-    double getRawPos(); //collected data
-    double getAngle(); //calculated value
+    double getRawPos(); //collected position data
+    double getAngle(); //calculated angle
 
 };
 

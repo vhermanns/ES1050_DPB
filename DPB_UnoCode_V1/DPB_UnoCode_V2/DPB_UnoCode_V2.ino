@@ -1,32 +1,29 @@
 /*
  * 1050 DPB: IID
  * Studio 17, Team 1
- * Rotary encoder, and wire communication code
- * Version 1 
- * Start Date: 02/20/2019
- * Last Updated: 03/14/2019
+ * Rotary encoder, and serial communication code
+ * Version 2 (Bluetooth enabled)
  */
 
-#include "SerialCommunication.h"
+#include "HC06.h"
 #include "Rotary.h"
 
-SerialCom com;
+blueTooth bt;
 rotaryEncoder rotary;
 
 void setup() {
   rotary.init();
-  com.init();
+  bt.init();
 }
 
 void loop() {
   //update data and insure it is current
   rotary.updateRawPos();
   rotary.setAngle();
-  com.update();
 
-  //send data over serial connection 
+  //send data over bluetooth 
   int pos = rotary.getRawPos();
   rotary.setAngle();
   double ang = rotary.getAngle();
-  com.sendData(pos, ang);
+  bt.sendData(ang);
 }
